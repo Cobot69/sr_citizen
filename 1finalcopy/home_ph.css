@@ -1,0 +1,172 @@
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #f86060;
+  --text-dark: #2b2d42;
+  --text-light: #8d99ae;
+  --background-light: #f8f9fa;
+  --white: #ffffff;
+  --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+/* Base Styles */
+body {
+font-family: 'Roboto', sans-serif;
+margin: 0;
+padding: 0;
+background-color: var(--background-light);
+color: var(--text-dark);
+text-align: center;
+}
+
+/* Header Styles */
+.header {
+background: var(--gradient);
+padding: 15px 0;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+border-bottom: 3px solid var(--secondary-color);
+transition: all 0.3s ease;
+}
+
+.header:hover {
+border-bottom: 3px solid var(--accent-color);
+}
+
+.header-container {
+max-width: 1400px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+}
+
+/* Branding */
+.branding h1 {
+font-size: 2.6rem;
+font-weight: 700;
+color: var(--white);
+margin: 0;
+}
+
+.branding h1 span {
+color: var(--accent-color);
+font-style: italic;
+font-weight: 800;
+}
+
+.branding p {
+font-size: 1rem;
+color: var(--white);
+margin-top: 5px;
+}
+
+/* Navigation */
+.nav-links {
+list-style: none;
+display: flex;
+gap: 30px;
+margin: 0;
+padding: 0;
+}
+
+.nav-links li a {
+text-decoration: none;
+color: var(--white);
+font-size: 1rem;
+font-weight: 600;
+padding: 8px 16px;
+border-radius: 8px;
+transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav-links li a:hover {
+background: var(--secondary-color);
+transform: translateY(-3px);
+}
+
+/* Card Styles */
+.container {
+display: flex;
+justify-content: center;
+gap: 20px;
+flex-wrap: wrap;
+margin: 0 20px;
+}
+
+.card {
+background: var(--white);
+border-radius: 12px;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+padding: 30px;
+width: 250px;
+text-align: center;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+transform: translateY(-10px);
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+background: var(--gradient);
+color: var(--white);
+}
+
+.card img {
+width: 80px;
+margin-bottom: 15px;
+}
+
+.card h2 {
+font-size: 20px;
+margin: 15px 0;
+color: var(--primary-color);
+}
+
+.card:hover h2 {
+color: var(--white);
+}
+
+.card p {
+font-size: 16px;
+color: var(--text-light);
+}
+
+.card:hover p {
+color: var(--white);
+}
+
+.card a {
+display: inline-block;
+margin-top: 20px;
+padding: 12px 25px;
+background: var(--gradient);
+color: var(--white);
+text-decoration: none;
+border-radius: 30px;
+font-size: 16px;
+transition: background-color 0.3s;
+}
+
+.card:hover a {
+background: var(--white);
+color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+margin-top: 40px;
+padding: 15px 0;
+font-size: 14px;
+color: var(--text-light);
+background-color: var(--text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+.card {
+  width: 100%;
+}
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Registration</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #f86060;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .registration-container {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-size: 24px;
+        }
+        .question, .personal-details {
+            margin-bottom: 15px;
+            text-align: left;
+            font-size: 20px;
+            color: var(--text-dark);
+        }
+        label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--text-light);
+        }
+        input[type="radio"], input[type="text"] {
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        button:hover {
+            background: var(--secondary-color);
+        }
+        #resultMessage {
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container" id="registrationContainer">
+        <h1>Driver Registration</h1>
+        <form id="personalDetailsForm">
+            <div class="personal-details">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" required>
+                <label for="license">License Number:</label>
+                <input type="text" id="license" required>
+                <label for="aadhaar">Aadhaar Card Number:</label>
+                <input type="text" id="aadhaar" required>
+            </div>
+            <button type="button" onclick="startQuestionnaire()">Start Questionnaire</button>
+        </form>
+        <form id="registrationForm" style="display: none;">
+            <div class="question" id="questionContainer"></div>
+            <button type="button" onclick="previousQuestion()">Back</button>
+            <button type="button" onclick="nextQuestion()">Next</button>
+        </form>
+        <div id="resultMessage"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script>
+        const questions = [
+            {
+                text: "1. Do you have a valid driver's license?",
+                options: ['yes', 'no', 'expired', 'international'],
+                correct: ['yes', 'international']
+            },
+            {
+                text: "2. Are you over 21 years old?",
+                options: ['yes', 'no', '18-21', 'under18'],
+                correct: ['yes']
+            },
+            {
+                text: "3. How many years of driving experience do you have?",
+                options: ['0-1', '2-5', '5-10', '10+'],
+                correct: ['2-5', '5-10', '10+']
+            },
+            {
+                text: "4. Do you have any of the following certifications?",
+                options: ['defensive', 'first-aid', 'none', 'other'],
+                correct: ['defensive', 'first-aid']
+            },
+            {
+                text: "5. Are you familiar with the local area?",
+                options: ['yes', 'no', 'somewhat', 'new'],
+                correct: ['yes', 'somewhat']
+            },
+            {
+                text: "6. What type of vehicle do you own?",
+                options: ['sedan', 'suv', 'truck', 'auto', 'none'],
+                correct: ['sedan', 'suv', 'truck', 'auto']
+            },
+            {
+                text: "7. Are you willing to work flexible hours?",
+                options: ['yes', 'no', 'part-time', 'full-time'],
+                correct: ['yes', 'part-time', 'full-time']
+            },
+            {
+                text: "8. Do you have a clean driving record?",
+                options: ['yes', 'no', 'minor', 'major'],
+                correct: ['yes', 'minor']
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        const userAnswers = {};
+
+        function startQuestionnaire() {
+            const personalDetailsForm = document.getElementById('personalDetailsForm');
+            if (personalDetailsForm.checkValidity()) {
+                personalDetailsForm.style.display = 'none';
+                document.getElementById('registrationForm').style.display = 'block';
+                displayQuestion(currentQuestionIndex);
+            } else {
+                alert('Please fill out all personal details.');
+            }
+        }
+
+        function displayQuestion(index) {
+            const questionContainer = document.getElementById('questionContainer');
+            const question = questions[index];
+            questionContainer.innerHTML = `<p>${question.text}</p>` + question.options.map(option => `
+                <label><input type="radio" name="q${index}" value="${option}" ${userAnswers[`q${index}`] && userAnswers[`q${index}`] === option ? 'checked' : ''}> ${option.charAt(0).toUpperCase() + option.slice(1)}</label>
+            `).join('');
+        }
+
+        function nextQuestion() {
+            saveUserAnswers();
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+            } else {
+                evaluateAnswers();
+            }
+        }
+
+        function previousQuestion() {
+            saveUserAnswers();
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion(currentQuestionIndex);
+            }
+        }
+
+        function saveUserAnswers() {
+            const selectedOptions = document.querySelectorAll(`input[name="q${currentQuestionIndex}"]:checked`);
+            const selectedValues = Array.from(selectedOptions).map(option => option.value);
+            userAnswers[`q${currentQuestionIndex}`] = selectedValues;
+        }
+
+        function evaluateAnswers() {
+            let allCorrect = true;
+            questions.forEach((question, index) => {
+                const userAnswer = userAnswers[`q${index}`] || [];
+                if (!userAnswer.some(value => question.correct.includes(value))) {
+                    allCorrect = false;
+                }
+            });
+
+            const registrationContainer = document.getElementById('registrationContainer');
+            if (allCorrect) {
+                registrationContainer.innerHTML = "<h1>Thank you! Our team will reach out to you.</h1>";
+            } else {
+                registrationContainer.innerHTML = "<h1>Sorry, requirements not met.</h1>";
+            }
+        }
+
+        // Initialize the first question
+        displayQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maithri</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #002f4e;
+      padding: 20px;
+      text-align: center;
+    }
+    .header-container h1, .header-container h5, .header-container h3 {
+      color: white;
+    }
+    .about-container, .facilities-container, .gallery-container, .contact-container {
+      padding: 20px;
+      margin: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .facilities-container h2, .gallery-container h2, .contact-container h2 {
+      color: brown;
+    }
+    .facilities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .facility-card {
+      background-color: #e7f3fe;
+      border: 1px solid #b3d7ff;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+    .facility-card:hover {
+      transform: scale(1.05);
+    }
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .gallery-grid img {
+      width: 48%;
+      margin: 1%;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #003b62;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Maithri Vrudashrama</h1>
+      <h5>Old Age Home</h5>
+      <h3>A home filled with care and warmth for our elders</h3>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="about-container">
+      <h2 style="color: brown;">About Us</h2>
+      <ul style="font-size: x-large;">
+        <li>Maithri Vrudashrama is a free old age home located in Bairidevarakoppa, Hubballi.</li>
+        <li>It is a peaceful and welcoming place designed to provide care and support for elderly residents.</li>
+        <li>Currently, the ashram houses 25 senior citizens, with 5 dedicated staff members who ensure a friendly and homely atmosphere.</li>
+        <li>The staff are known for their caring nature, making every resident feel valued and comfortable.</li>
+        <li>The ashram provides all the basic necessities, including regular medical checkups, nutritious meals, and a clean, well-maintained living environment.</li>
+        <li>Residents engage in extra activities like bhajans, which foster a sense of community and spiritual well-being.</li>
+        <li>These activities help the elderly stay active and involved, adding joy and meaning to their daily lives.</li>
+        <li>Situated far from the main road, Maithri Vrudashrama offers a serene environment with minimal noise pollution.</li>
+        <li>The peaceful surroundings and fresh air make it an ideal place for senior citizens to live in comfort.</li>
+        <li>The ashram accepts both male and female residents, ensuring separate accommodations to maintain privacy.</li>
+        <li>With its friendly staff, supportive environment, and a range of activities, Maithri Vrudashrama truly feels like home for its residents.</li>
+        <li>It is a place where elderly individuals can live with dignity and peace, making it a reliable and compassionate choice for senior care in Hubballi.</li>
+      </ul>
+      
+    </div>
+  </section>
+
+  <section id="facilities">
+    <div class="facilities-container">
+      <h2 style="color: brown;">Our Facilities</h2>
+      <div class="facilities-grid">
+        <div class="facility-card">
+          <h3>Clean Living Environment</h3>
+        </div>
+        <div class="facility-card">
+          <h3>Regular Medical Checkups</h3>
+        </div>
+        <div class="facility-card">
+          <h3>Nutritious Meals</h3>
+        </div>
+        <div class="facility-card">
+          <h3>Bhajans and Spiritual Activities</h3>
+        </div>
+        <div class="facility-card">
+          <h3>Friendly and Caring Staff</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="gallery-container">
+      <h2 style="color: brown;">Image Gallery</h2>
+      <div class="gallery-grid">
+        <img src="maithri1.jpg" alt="Old Age Home - 1">
+        <img src="maithri2.jpg" alt="Old Age Home - 2">
+        <img src="maithri3.jpg" alt="Old Age Home - 3">
+        <img src="maithri4.jpg" alt="Old Age Home - 4">
+      </div>
+      <video src="maithri.mp4" alt="Old Age Home Video" controls width="57%"></video>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-container">
+      <h2 style="color: brown;">Contact Us</h2>
+      <p style="font-size: large;">Phone: +917795891828</p>
+      <p style="font-size: large;">Address: ShivanandNagar, Hubballi, Karnataka 580025</p>
+    </div>
+  </section>
+
+  <button onclick="window.location.href = 'oldagehome.html'">
+    ← Back
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Area - ElderlyNet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #f86060;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .area-select {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234361ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .area-select:hover, .area-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(67, 97, 238, 0.3);
+        }
+
+        .store-list {
+            margin-top: 20px;
+        }
+
+        .store-card {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .store-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .store-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.6em;
+        }
+
+        .store-card p {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+
+        .store-card .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: flex-start;
+        }
+
+        .store-card .action-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .store-card .action-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .store-card .action-button:hover:before {
+            width: 100%;
+        }
+
+        .store-card .action-button:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+
+        .store-card .action-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .store-card .action-button:hover i {
+            transform: scale(1.1);
+        }
+
+        .store-card .action-button.phone-button {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .store-card .action-button.phone-button:before {
+            background: var(--accent-color);
+        }
+
+        .store-card .action-button.phone-button:hover {
+            box-shadow: 0 4px 12px rgba(248, 96, 96, 0.2);
+        }
+
+        .store-card .action-button.whatsapp-button {
+            border-color: #25D366;
+            color: #25D366;
+        }
+
+        .store-card .action-button.whatsapp-button:before {
+            background: #25D366;
+        }
+
+        .store-card .action-button.whatsapp-button:hover {
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Select Your Area</h1>
+    </header>
+
+    <div class="content">
+        <select id="areaSelect" class="area-select">
+            <option value="">Choose your area</option>
+            <option value="vidyanagar">Vidyanagar</option>
+            <option value="gokul road">Gokul Road</option>
+            <option value="keshwapur">Keshwapur</option>
+            <option value="amargol">Amargol</option>
+            <option value="deshpande nagar">Deshpande Nagar</option>
+            <option value="rn shetty road">RN Shetty Road</option>
+            <option value="bengeri">Bengeri</option>
+            <option value="durgad bail">Durgad Bail</option>
+            <option value="vikas nagar">Vikas Nagar</option>
+            <option value="vijaya nagar">Vijaya Nagar</option>
+        </select>
+
+        <div id="storeList" class="store-list"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const storeData = {
+                "grocery": {
+                    "vidyanagar": [
+                       
+                     
+                        {
+                            name: "Ravi Supermart",
+                            address: "Shirur Park Road, 2ND STAGE, 80 FEET ROAD, 96, Shirur Park, 2nd stage, Vidya Nagar, Hubballi, Karnataka 580021",
+                            timings: "9:30 AM - 9:00 PM",
+                            phone: "08362213999"
+                        },
+                        {
+                            name: "More Supermarket - SIRUR PARK",
+                            address: "CTS No 3552/59, 3552/61, 80 Feet Rd, Shirur Park, Vidya Nagar, Hubballi, Karnataka 580031",
+                            timings: {
+                                "Monday": "7:00 AM - 10:00 PM",
+                                "Tuesday": "7:00 AM - 10:00 PM",
+                                "Wednesday": "7:00 AM - 10:00 PM",
+                                "Thursday": "7:00 AM - 10:00 PM",
+                                "Friday": "7:00 AM - 10:00 PM",
+                                "Saturday": "7:00 AM - 10:00 PM",
+                                "Sunday": "7:00 AM - 10:00 PM"
+                            },
+                            phone: "08108138000",
+                            website: "https://moreretail.in/"
+                        },
+                        {
+                            name: "More Supermarket - Rajnagar Hubli",
+                            address: "Diamond Crystal Apex, Vishweshwar Nagar Main Road, opposite KEB Office, Hastinapur Layout, Rajnagar, Vidya Nagar, Hubballi, Karnataka 580032",
+                            timings: {
+                                "Monday": "7:00 AM - 10:00 PM",
+                                "Tuesday": "7:00 AM - 10:00 PM",
+                                "Wednesday": "7:00 AM - 10:00 PM",
+                                "Thursday": "7:00 AM - 10:00 PM",
+                                "Friday": "7:00 AM - 10:00 PM",
+                                "Saturday": "7:00 AM - 10:00 PM",
+                                "Sunday": "7:00 AM - 10:00 PM"
+                            },
+                            phone: "08108138000",
+                            website: "https://moreretail.in/"
+                        },
+                        {
+                            name: "Vishal Mega Mart",
+                            address: "SUSHRITHA HOSPITAL, HUBALI CENTRE MALL, NH-4, BESIDES, Vidya Nagar, HUBLI, Karnataka 580021",
+                            timings: {
+                                "Monday": "10:00 AM - 10:00 PM",
+                                "Tuesday": "10:00 AM - 10:00 PM",
+                                "Wednesday": "10:00 AM - 10:00 PM",
+                                "Thursday": "10:00 AM - 10:00 PM",
+                                "Friday": "10:00 AM - 10:00 PM",
+                                "Saturday": "10:00 AM - 10:00 PM",
+                                "Sunday": "10:00 AM - 10:00 PM"
+                            },
+                            phone: "07217888072",
+                            website: "https://stores.vishalmegamart.com/shopping-mart-hubli-dharwad-30596/home?utm_source=GMB"
+                        },
+                        {
+                            name: "Shree Venkateshwar Super Market",
+                            address: "947G+V3R, Vidya Nagar, Hubballi, Karnataka 580021",
+                            timings: {
+                                "Monday": "9:00 AM - 10:00 PM",
+                                "Tuesday": "9:00 AM - 10:00 PM",
+                                "Wednesday": "9:00 AM - 10:00 PM",
+                                "Thursday": "9:00 AM - 10:00 PM",
+                                "Friday": "9:00 AM - 10:00 PM",
+                                "Saturday": "9:00 AM - 10:00 PM",
+                                "Sunday": "9:00 AM - 10:00 PM"
+                            },
+                            phone: "09449804366"
+                        },
+                        {
+                            name: "Reliance SMART Point",
+                            address: "Main road, opposite SBI Apartment, Rajnagar, Vidya Nagar, Hubballi, Karnataka 580032",
+                            timings: {
+                                "Monday": "6:00 AM - 10:00 PM",
+                                "Tuesday": "6:00 AM - 10:00 PM",
+                                "Wednesday": "6:00 AM - 10:00 PM",
+                                "Thursday": "6:00 AM - 10:00 PM",
+                                "Friday": "6:00 AM - 10:00 PM",
+                                "Saturday": "6:00 AM - 10:00 PM",
+                                "Sunday": "6:00 AM - 10:00 PM"
+                            },
+                            phone: "18008910001",
+                            website: "https://relianceretail.com/"
+                        }
+                    ],
+                    "gokul road": [
+                        {
+                            name: "Reliance SMART Superstore",
+                            address: "Lower Ground Floor, Urban Oasis Mall Gokul Road, Airport Road, Hubballi, Karnataka 580020",
+                            timings: {
+                                "Monday": "10:00 AM - 10:00 PM",
+                                "Tuesday": "10:00 AM - 10:00 PM",
+                                "Wednesday": "10:00 AM - 10:00 PM",
+                                "Thursday": "10:00 AM - 10:00 PM",
+                                "Friday": "10:00 AM - 10:00 PM",
+                                "Saturday": "10:00 AM - 10:00 PM",
+                                "Sunday": "10:00 AM - 10:00 PM"
+                            },
+                            phone: "18008910001",
+                            website: "https://stores.reliancesmartbazaar.com/reliance-smart-superstore-shopping-outlet-airport-road-hubli-280366/Home?utm_source=locator&utm_medium=googleplaces"
+                        },
+                        {
+                            name: "More Supermarket - SILVER TOWN",
+                            address: "cross, 31, Gokul Rd, Silver Town, Karnataka 580030",
+                            timings: {
+                                "Monday": "7:00 AM - 10:00 PM",
+                                "Tuesday": "7:00 AM - 10:00 PM",
+                                "Wednesday": "7:00 AM - 10:00 PM",
+                                "Thursday": "7:00 AM - 10:00 PM",
+                                "Friday": "7:00 AM - 10:00 PM",
+                                "Saturday": "7:00 AM - 10:00 PM",
+                                "Sunday": "7:00 AM - 10:00 PM"
+                            },
+                            phone: "08108138000",
+                            website: "https://www.moreretail.in/store-address"
+                        },
+                        {
+                            name: "Ravi's Green Field Super Market",
+                            address: "74/3B Glabus Vishal Avenue, GokulRoad, near Denissons Hotel, Hubballi",
+                            timings: {
+                                "Monday": "9:00 AM - 8:30 PM",
+                                "Tuesday": "9:00 AM - 8:30 PM",
+                                "Wednesday": "9:00 AM - 8:30 PM",
+                                "Thursday": "9:00 AM - 8:30 PM",
+                                "Friday": "9:00 AM - 9:00 PM",
+                                "Saturday": "9:00 AM - 8:30 PM",
+                                "Sunday": "9:00 AM - 8:30 PM"
+                            },
+                            phone: "09035658533"
+                        },
+                        {
+                            name: "SAPTAGIRI SUPER MARKET",
+                            address: "Plot No 19, Avva Building, Shop No 1, Kotilingeshwar Nagar, Gokul Rd, opp. Hiregoudar Hospital, Hubballi, Karnataka 580030",
+                            timings: "9:00 AM - 9:00 PM",
+                            phone: "08867634199"
+                        }
+                    ],
+                    "keshwapur": [
+                        {
+                            name: "Reliance SMART Superstore",
+                            address: "No 438B, 58A, Kusugal Rd, Desai Park, Hubballi, Karnataka 580023",
+                            timings: {
+                                "Monday": "7:30 AM - 10:00 PM",
+                                "Tuesday": "8:00 AM - 10:00 PM",
+                                "Wednesday": "8:00 AM - 10:00 PM",
+                                "Thursday": "8:00 AM - 10:00 PM",
+                                "Friday": "8:00 AM - 10:00 PM",
+                                "Saturday": "8:00 AM - 10:00 PM",
+                                "Sunday": "8:30 AM - 10:00 PM"
+                            },
+                            phone: "18008910001",
+                            website: "https://stores.reliancesmartbazaar.com/reliance-smart-superstore-shopping-outlet-desai-park-hubli-280298/Home?utm_source=locator&utm_medium=googleplaces"
+                        },
+                        {
+                            name: "More Supermarket - Kusugal Road",
+                            address: "432B/87, Emkay Complex, Near Madhura Colony, Beside Akshay Colony, Kusugal Rd, Keshwapur, Karnataka 580023",
+                            timings: {
+                                "Monday": "8:00 AM - 9:00 PM",
+                                "Tuesday": "8:00 AM - 9:00 PM",
+                                "Wednesday": "8:00 AM - 9:00 PM",
+                                "Thursday": "8:00 AM - 9:00 PM",
+                                "Friday": "8:00 AM - 9:00 PM",
+                                "Saturday": "8:00 AM - 9:00 PM",
+                                "Sunday": "8:00 AM - 9:00 PM"
+                            },
+                            phone: "08108138000",
+                            website: "https://moreretail.in/"
+                        },
+                        {
+                            name: "Reliance Fresh",
+                            address: "Kalyani Classic, opp. Sbi Zonal Off, Keshwapur, Kusugal, Karnataka 580023",
+                            timings: "8:00 AM - 10:00 PM",
+                            phone: "18001027382",
+                            website: "http://storelocator.ril.com/Retail.aspx"
+                        },
+                        {
+                            name: "Vishal Mega Mart",
+                            address: "Kusugal Rd, beside Royal Enfield Showroom, Vasant Nagar, Hubballi, Karnataka 580023",
+                            timings: {
+                                "Monday": "10:00 AM - 9:00 PM",
+                                "Tuesday": "10:00 AM - 9:00 PM",
+                                "Wednesday": "10:00 AM - 9:00 PM",
+                                "Thursday": "10:00 AM - 9:00 PM",
+                                "Friday": "10:00 AM - 9:00 PM",
+                                "Saturday": "10:00 AM - 9:00 PM",
+                                "Sunday": "10:00 AM - 9:00 PM"
+                            },
+                            phone: "08178024063",
+                            website: "https://stores.vishalmegamart.com/shopping-mart-hubli-dharwad-30267/home?utm_source=GMB"
+                        }
+                    ],
+                    "amargol": [
+                        
+                    
+                        {
+                            name: "HalliMart",
+                            address: "Ashwamedha Park, Amargol, Hubballi, Karnataka 580025",
+                            timings: {
+                                "Monday": "9:00 AM - 9:30 PM",
+                                "Tuesday": "9:00 AM - 9:30 PM",
+                                "Wednesday": "9:00 AM - 9:30 PM",
+                                "Thursday": "9:00 AM - 9:30 PM",
+                                "Friday": "9:00 AM - 9:30 PM",
+                                "Saturday": "9:00 AM - 9:30 PM",
+                                "Sunday": "9:00 AM - 9:30 PM"
+                            },
+                            phone: "08792443067",
+                            website: "http://www.hallimart.in/"
+                        }
+                    ],
+                    "deshpande nagar": [
+                        {
+                            name: "Reliance Smart Point",
+                            address: "944Q+J5F, Vernekar Plaza, Cts No. 162/17A1,A2,A3,A4 & A5, Deshpande Nagar, Hubballi, Karnataka 580029",
+                            timings: {
+                                "Monday": "7:00 AM - 10:00 PM",
+                                "Tuesday": "7:00 AM - 10:00 PM",
+                                "Wednesday": "7:00 AM - 10:00 PM",
+                                "Thursday": "7:00 AM - 10:00 PM",
+                                "Friday": "7:00 AM - 10:00 PM",
+                                "Saturday": "7:00 AM - 10:00 PM",
+                                "Sunday": "7:00 AM - 10:00 PM"
+                            },
+                            phone: "08362353074",
+                            website: "http://storelocator.ril.com/Retail.aspx"
+                        },
+                        {
+                            name: "Star Localmart - Deshpande Nagar Hubli",
+                            address: "Kumbakonam plot, Gujarat Bhavan Rd, Bailappanavar Nagar, Deshpande Nagar, Hubballi, Karnataka 580029",
+                            timings: {
+                                "Monday": "8:00 AM - 10:00 PM",
+                                "Tuesday": "8:00 AM - 10:00 PM",
+                                "Wednesday": "8:00 AM - 10:00 PM",
+                                "Thursday": "8:00 AM - 10:00 PM",
+                                "Friday": "8:00 AM - 10:00 PM",
+                                "Saturday": "8:00 AM - 10:00 PM",
+                                "Sunday": "8:00 AM - 10:00 PM"
+                            },
+                            phone: "07758999555",
+                            website: "http://starlocalmart.com/"
+                        }
+                    ],
+                    "rn shetty road": [
+                        {
+                            name: "4Seasons Super Market",
+                            address: "RN Shetty Rd, Chaitanya Nagar, vimaleshwar Nagar, Hubballi, Karnataka 580030",
+                            timings: {
+                                "Monday": "9:00 AM - 10:00 PM",
+                                "Tuesday": "9:00 AM - 10:00 PM",
+                                "Wednesday": "9:00 AM - 10:00 PM",
+                                "Thursday": "9:00 AM - 10:00 PM",
+                                "Friday": "9:00 AM - 10:00 PM",
+                                "Saturday": "9:00 AM - 10:00 PM",
+                                "Sunday": "9:00 AM - 10:00 PM"
+                            },
+                            phone: "08867221811"
+                        }
+                    ],
+                    "bengeri": [
+                        {
+                            name: "Kisan Super Market",
+                            address: "Bengeri Extension, Kalyan Nagar, Hubballi, Karnataka 580023",
+                            timings: {
+                                "Monday": "9:00 AM - 9:00 PM",
+                                "Tuesday": "9:00 AM - 9:00 PM",
+                                "Wednesday": "9:00 AM - 9:00 PM",
+                                "Thursday": "9:00 AM - 9:00 PM",
+                                "Friday": "9:00 AM - 9:00 PM",
+                                "Saturday": "9:00 AM - 9:00 PM",
+                                "Sunday": "9:00 AM - 9:00 PM"
+                            },
+                            phone: "08050464616"
+                        },
+                        {
+                            name: "Star Localmart - SILVAR PARK HUBALI",
+                            address: "Opp:, Golden Park, GHANSHYAM ENCLAVE Bengrei Extension Silver Park, layout, Hubballi, Karnataka 580032",
+                            timings: {
+                                "Monday": "8:00 AM - 10:00 PM",
+                                "Tuesday": "8:00 AM - 10:00 PM",
+                                "Wednesday": "8:00 AM - 10:00 PM",
+                                "Thursday": "8:00 AM - 10:00 PM",
+                                "Friday": "8:00 AM - 10:00 PM",
+                                "Saturday": "8:00 AM - 10:00 PM",
+                                "Sunday": "8:00 AM - 10:00 PM"
+                            },
+                            website: "https://starlocalmart.com/"
+                        }
+                    ],
+                    "durgad bail": [
+                        {
+                            name: "MAHAJAN PROVISION STORES",
+                            address: "MAHAJAN PROVISION STORES, Radhakrishna Galli, Durgad Bail, New Hubli, Hubballi, Karnataka 580020",
+                            timings: {
+                                "Monday": "9:00 AM - 9:00 PM",
+                                "Tuesday": "9:00 AM - 9:00 PM",
+                                "Wednesday": "9:00 AM - 9:00 PM",
+                                "Thursday": "9:00 AM - 9:00 PM",
+                                "Friday": "9:00 AM - 9:00 PM",
+                                "Saturday": "9:00 AM - 9:00 PM",
+                                "Sunday": "9:00 AM - 9:00 PM"
+                            },
+                            phone: "08792711711"
+                        },
+                        {
+                            name: "Aroodha Mart",
+                            address: "84QX+J58, Settlement Main Road, Chetana Colony, Durgad Bail, New Hubli, Santiniketan, Hubballi, Karnataka 580020",
+                            timings: {
+                                "Monday": "7:00 AM - 10:00 PM",
+                                "Tuesday": "7:00 AM - 10:00 PM",
+                                "Wednesday": "7:00 AM - 10:00 PM",
+                                "Thursday": "7:00 AM - 10:00 PM",
+                                "Friday": "7:00 AM - 10:00 PM",
+                                "Saturday": "7:00 AM - 10:00 PM",
+                                "Sunday": "7:00 AM - 10:00 PM"
+                            },
+                            phone: "09663333703"
+                        },
+                        {
+                            name: "M/S. R. M. Mahajan",
+                            address: "6, Durgad Bail, New Hubli, Hubballi, Karnataka 588020",
+                            timings: {
+                                "Monday": "11:00 AM - 9:30 PM",
+                                "Tuesday": "11:00 AM - 9:30 PM",
+                                "Wednesday": "11:00 AM - 9:30 PM",
+                                "Thursday": "11:00 AM - 9:30 PM",
+                                "Friday": "11:00 AM - 9:30 PM",
+                                "Saturday": "11:00 AM - 9:30 PM",
+                                "Sunday": "11:00 AM - 9:30 PM"
+                            },
+                            phone: "09036921667"
+                        }
+                    ],
+                    "vikas nagar": [
+                        {
+                            name: "Fullbaskets The Grocery Store",
+                            address: "Kalburgi Building, Plot No 51, Siddhalingeshwar Colony, Vikas Nagar, Hubballi, Karnataka 580021",
+                            timings: {
+                                "Monday": "7:00 AM - 10:00 PM",
+                                "Tuesday": "7:00 AM - 10:00 PM",
+                                "Wednesday": "7:00 AM - 10:00 PM",
+                                "Thursday": "7:00 AM - 10:00 PM",
+                                "Friday": "7:00 AM - 10:00 PM",
+                                "Saturday": "7:00 AM - 10:00 PM",
+                                "Sunday": "7:00 AM - 10:00 PM"
+                            },
+                            phone: "09148005053"
+                        }
+                    ],
+                    "vijaya nagar": [
+                        {
+                            name: "Star Local Mart",
+                            address: "94CR+7JP, Devangpeth Main Rd, Vijay Nagar, kori, Dewangapeth, Hubballi, Karnataka 580023",
+                            timings: {
+                                "Monday": "8:00 AM - 10:00 PM",
+                                "Tuesday": "8:00 AM - 10:00 PM",
+                                "Wednesday": "8:00 AM - 10:00 PM",
+                                "Thursday": "8:00 AM - 10:00 PM",
+                                "Friday": "8:00 AM - 10:00 PM",
+                                "Saturday": "8:00 AM - 10:00 PM",
+                                "Sunday": "8:00 AM - 10:00 PM"
+                            },
+                            website: "https://www.starlocalmart.com/"
+                        }
+                    ]
+                },
+                "medical": {
+                    "vidyanagar": [
+                        {
+                            name: "MedPlus",
+                            address: "Vidyanagar Main Road",
+                            timings: {
+                                "Monday": "8:00 AM - 10:00 PM",
+                                "Tuesday": "8:00 AM - 10:00 PM",
+                                "Wednesday": "8:00 AM - 10:00 PM",
+                                "Thursday": "8:00 AM - 10:00 PM",
+                                "Friday": "8:00 AM - 10:00 PM",
+                                "Saturday": "8:00 AM - 10:00 PM",
+                                "Sunday": "8:00 AM - 10:00 PM"
+                            },
+                            phone: "08362244555"
+                        },
+                        {
+                            name: "Apollo Pharmacy Sirur Park Hubli",
+                            address: "Ground Floor, No. 3552/57, opp. Canara Bank, Shirur Park, Vidya Nagar, Hubballi, Karnataka 580031",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08044462730",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        },
+                        {
+                            name: "Apollo Pharmacy Vidyanagar Hubli",
+                            address: "Ground Floor, No. 1A, Tax Office Rd, opp. Strands Salon, Vidya Nagar, Hubballi, Karnataka 580021",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08044462736",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        },
+                        {
+                            name: "Aster Pharmacy - Shirur Park",
+                            address: "No. 3540, 10, Shirur Park Road, Shirur Park, Vidya Nagar, Hubballi, Karnataka 580021",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08069866811",
+                            website: "https://shirurpark.asterpharmacy.in/"
+                        }
+                    ],
+                    "keshwapur": [
+                        {
+                            name: "Wellness Forever Pharmacy - Keshwapur, Hubballi",
+                            address: "Ground Floor, Yash Building, Beside Canara Bank Kusugal Road,Vasant Nagar, New P & T Colony, Keshwapur, Hubballi, Karnataka 580023",
+                            timings: "24 Hours",
+                            phone: "09611360474",
+                            website: "https://www.wellnessforever.com/"
+                        },
+                        {
+                            name: "Apollo Pharmacy Keshwapur Hubli 2",
+                            address: "Ground Floor, Diamond Castle Apartments, No. 6, Sulla Rd, opposite Jain Mandir, Old Badami Nagar, Bengeri Extension, Keshwapur, Hubballi, Karnataka 580023",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08362221486",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        }
+                    ],
+                    "gokul road": [
+                        {
+                            name: "Wellness Forever Pharmacy - Gokul Road, Hubli",
+                            address: "Shop No 1, Ground Floor, Gokul Rd, nearby to More Supermarket, Apoorva Nagar, Basaveshvar Nagar, Hubballi, Karnataka 580030",
+                            timings: "24 Hours",
+                            phone: "08657002375",
+                            website: "https://wellnessforever.com/"
+                        },
+                        {
+                            name: "Apollo Pharmacy Gokul Road-Hubli",
+                            address: "Shop.No.5&6, Ground floor, water tank, PID.No.36A/1043, Sy.No.611A, Ward, No.36A, Gokul Rd, near Nehru Nagar, Hubballi, Karnataka 580030",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08044462939",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        }
+                    ],
+                    "railway station road": [
+                        {
+                            name: "Wellness Forever Pharmacy - Station Road, Hubballi",
+                            address: "Shop No. 2, Swarna City Centre, Station Road, Railway Colony, Hubballi, Karnataka 580020",
+                            timings: "24 Hours",
+                            phone: "08362363633",
+                            website: "https://www.wellnessforever.com/"
+                        }
+                    ],
+                    "chennamma circle": [
+                        {
+                            name: "Wellness Forever Pharmacy - Chenamma Circle, Hubballi",
+                            address: "Ground floor, Vir Mansion, CTS No-1000 Ward no 3 Chenamma Circle, Traffic Island, Hubballi, Karnataka 580023",
+                            timings: "24 Hours",
+                            phone: "08657913764",
+                            website: "https://www.wellnessforever.com/"
+                        }
+                    ],
+                    "deshpande nagar": [
+                        {
+                            name: "Wellness Forever Pharmacy - Eureka Junction, Travellers Bungalow Road, Hubballi",
+                            address: "Shop No.02, Ground Floor, Eureka Junction, Travellers Bunglow Rd, Deshpande Nagar, Hubballi, Karnataka 580029",
+                            timings: {
+                                "Monday": "8:00 AM - 12:00 AM",
+                                "Tuesday": "8:00 AM - 12:00 AM",
+                                "Wednesday": "8:00 AM - 12:00 AM",
+                                "Thursday": "8:00 AM - 12:00 AM",
+                                "Friday": "8:00 AM - 12:00 AM",
+                                "Saturday": "8:00 AM - 12:00 AM",
+                                "Sunday": "8:00 AM - 12:00 AM"
+                            },
+                            phone: "08655827664",
+                            website: "https://www.wellnessforever.com/"
+                        },
+                        {
+                            name: "Apollo Pharmacy",
+                            address: "No163/42,163/43 Ward, No 3, Deshpande Nagar Rd, opposite KEB Hall, Hubballi, Karnataka 580029",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08362221404",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        }
+                    ],
+                    "amargol": [
+                        {
+                            name: "Wellness Forever Phamacy - Navanagar Main Road, Amargol Village, Hubli",
+                            address: "Cancer Hospital, MIG- 4, Navanagar Rd, near Navanagar, Amargol, Hubballi, Karnataka 580025",
+                            timings: "24 Hours",
+                            phone: "07738196049",
+                            website: "https://www.wellnessforever.com/"
+                        }
+                    ],
+                    "dajibanpeth": [
+                        {
+                            name: "Apollo Pharmacy Dajbenpet Hubli",
+                            address: "No 1244, Ground Floor Near Ganesh Temple, Dajiban Peth Rd, Karnataka 580028",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08044462756",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        }
+                    ],
+                    "rn shetty road": [
+                        {
+                            name: "Apollo Pharmacy Rn Shetty Road Hubli",
+                            address: "Shop No 1, Ward No 38, R N Shetty Rd, Rajendra Nagar, Karnataka 580030",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08044462830",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        }
+                    ],
+                    "vijay nagar": [
+                        {
+                            name: "Apollo Pharmacy Vijaya Nagar Hubli",
+                            address: "Shop No 01 & 02, Plot No 102/1, Vijayanagar, Dharwad, Karnataka 580032",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08044462839",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        }
+                    ],
+                    "manjunath nagar": [
+                        {
+                            name: "Apollo Pharmacy Manjunathnagar Hubli",
+                            address: "Ward No 36A,Shop no 3&4, Ground floor Bldg No 31, Krishnapura, Manjunath Ngr, opposite Panchamukhi ganesh temple, Karnataka 580030",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "08044462809",
+                            website: "https://www.apollopharmacy.in/?utm_source=gmb&utm_medium=organic&utm_campaign=sulekhapromanage-apollo-pharmacy"
+                        }
+                    ],
+                    "vishweshwar nagar": [
+                        {
+                            name: "Aster Pharmacy - Vishweshwar Nagar",
+                            address: "No. 16, MK Plaza, near Maruti Temple, Adhyapak Nagar, Hubballi, Karnataka 580032",
+                            timings: {
+                                "Monday": "7:00 AM - 11:00 PM",
+                                "Tuesday": "7:00 AM - 11:00 PM",
+                                "Wednesday": "7:00 AM - 11:00 PM",
+                                "Thursday": "7:00 AM - 11:00 PM",
+                                "Friday": "7:00 AM - 11:00 PM",
+                                "Saturday": "7:00 AM - 11:00 PM",
+                                "Sunday": "7:00 AM - 11:00 PM"
+                            },
+                            phone: "09021110149",
+                            website: "https://vishweshwarnagar.asterpharmacy.in/"
+                        }
+                    ]
+                }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type') || 'medical'; // default to medical if not specified
+            const areaSelect = document.getElementById('areaSelect');
+            const storeList = document.getElementById('storeList');
+
+            areaSelect.addEventListener('change', function() {
+                const selectedArea = this.value;
+                if (selectedArea && storeData[type] && storeData[type][selectedArea]) {
+                    const stores = storeData[type][selectedArea];
+                    storeList.innerHTML = stores.map(store => `
+                        <div class="store-card">
+                            <h3>${store.name}</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> ${store.address}</p>
+                            <p><i class="fas fa-clock"></i> ${typeof store.timings === 'string' ? store.timings : store.timings[new Date().getDay()]}</p>
+                            <div class="action-buttons">
+                                ${store.phone ? `
+                                    <a href="tel:${store.phone}" class="action-button phone-button">
+                                        <i class="fas fa-phone"></i>
+                                        <span>Call Now</span>
+                                    </a>
+                                ` : ''}
+                                ${store.website ? `
+                                    <a href="${store.website}" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer" 
+                                       class="action-button">
+                                        <i class="fas fa-globe"></i>
+                                        <span>Visit Website</span>
+                                    </a>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    storeList.innerHTML = `<p>Please select an area to see ${type} stores.</p>`;
+                }
+            });
+
+            // Update the dropdown options based on type
+            if (type === 'medical') {
+                areaSelect.innerHTML = `
+                    <option value="">Choose your area</option>
+                    <option value="vidyanagar">Vidyanagar</option>
+                    <option value="keshwapur">Keshwapur</option>
+                    <option value="gokul road">Gokul Road</option>
+                    <option value="railway station road">Railway Station Road</option>
+                    <option value="chennamma circle">Chennamma Circle</option>
+                    <option value="deshpande nagar">Deshpande Nagar</option>
+                    <option value="amargol">Amargol</option>
+                    <option value="dajibanpeth">Dajibanpeth</option>
+                    <option value="rn shetty road">RN Shetty Road</option>
+                    <option value="vijay nagar">Vijay Nagar</option>
+                    <option value="manjunath nagar">Manjunath Nagar</option>
+                    <option value="vishweshwar nagar">Vishweshwar Nagar</option>
+                `;
+            } else if (type === 'grocery') {
+                areaSelect.innerHTML = `
+                    <option value="">Choose your area</option>
+                    <option value="vidyanagar">Vidyanagar</option>
+                    <option value="gokul road">Gokul Road</option>
+                    <option value="keshwapur">Keshwapur</option>
+                    <option value="amargol">Amargol</option>
+                    <option value="deshpande nagar">Deshpande Nagar</option>
+                    <option value="rn shetty road">RN Shetty Road</option>
+                    <option value="bengeri">Bengeri</option>
+                    <option value="durgad bail">Durgad Bail</option>
+                    <option value="vikas nagar">Vikas Nagar</option>
+                    <option value="vijaya nagar">Vijaya Nagar</option>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

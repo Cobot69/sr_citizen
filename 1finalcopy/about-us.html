@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ElderNet</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #f86060;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: var(--white);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .mission-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mission-point {
+            background: var(--background-light);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gradient);
+            color: var(--white);
+            padding: 4px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        .back-btn::before {
+            content: "←";
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index1.html" class="back-btn">Back to Home</a>
+    
+    <div class="header">
+        <h1>About ElderNet</h1>
+        <p>Empowering Senior Citizens Through Technology</p>
+    </div>
+    
+    <div class="content">
+        <div class="section">
+            <h2>Our Mission</h2>
+            <p>At ElderNet, we are dedicated to enhancing the quality of life for senior citizens through innovative technology solutions and comprehensive support services.</p>
+            
+            <div class="mission-points">
+                <div class="mission-point">
+                    <h3>Digital Inclusion</h3>
+                    <p>Breaking down technological barriers for seniors through user-friendly solutions.</p>
+                </div>
+                <div class="mission-point">
+                    <h3>Community Building</h3>
+                    <p>Creating a supportive network of seniors, caregivers, and service providers.</p>
+                </div>
+                <div class="mission-point">
+                    <h3>Healthcare Access</h3>
+                    <p>Facilitating easy access to healthcare services and information.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Impact Statistics</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">000+</div>
+                    <p>Senior Citizens Helped</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">00+</div>
+                    <p>Partner Organizations</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1+</div>
+                    <p>Cities Covered</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <p>Support Available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

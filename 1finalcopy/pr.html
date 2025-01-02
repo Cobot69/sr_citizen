@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pension Schemes</title>
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --accent-color: #f86060;
+      --text-dark: #2b2d42;
+      --text-light: #8d99ae;
+      --background-light: #f8f9fa;
+      --white: #ffffff;
+      --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    }
+
+    /* General Body Styles */
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+/* Header Styles */
+.header {
+  background: var(--gradient);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border-bottom: 3px solid var(--secondary-color);
+  transition: all 0.3s ease;
+  }
+  
+  .header:hover {
+  border-bottom: 3px solid var(--accent-color);
+  }
+  
+  .header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  }
+  
+  /* Branding */
+  .branding h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+  }
+  
+  .branding h1 span {
+  color: var(--accent-color);
+  font-style: italic;
+  font-weight: 800;
+  }
+  
+  .branding p {
+  font-size: 1rem;
+  color: var(--white);
+  margin-top: 5px;
+  }
+  
+  /* Navigation */
+  .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  }
+  
+  .nav-links li a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .nav-links li a:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  }
+    /* Section Title */
+    h2 {
+      text-align: center;
+      color: var(--primary-color);
+      margin: 30px 0 20px;
+      font-size: 2rem;
+    }
+
+    /* Plan Container */
+    .plan-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    /* Individual Plan */
+    .info-box {
+      background: var(--white);
+      border: 2px solid var(--primary-color);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 400px; /* Ensures equal height */
+    }
+
+    .info-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-box h3 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 5px;
+    }
+
+    .info-box p, .info-box ul {
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    .info-box ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .info-box ul li ul {
+      list-style: circle;
+      padding-left: 20px;
+    }
+
+    /* Apply Button */
+    .apply-button {
+      display: inline-block;
+      background: var(--primary-color);
+      color: var(--white);
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      text-align: center;
+      margin-top: auto; /* Push the button to the bottom */
+    }
+
+    .apply-button:hover {
+      background: var(--secondary-color);
+      transform: scale(1.1);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .plan-container {
+        grid-template-columns: 1fr; /* Single column on small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="branding">
+        <h1>Elder<span>Net</span></h1>
+        <p>Secure your health, secure your future.</p>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="home_ph.html">Plans</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <h2>Available Pension Schemes</h2>
+    <div class="plan-container">
+      <!-- Plan 1 -->
+      <div class="info-box">
+        <h3>Indira Gandhi National Old Age Pension Scheme (IGNOAPS)</h3>
+        <p>
+          The Indira Gandhi National Old Age Pension Scheme (IGNOAPS) is part of
+          the National Social Assistance Programme (NSAP) and aims to offer
+          financial support to elderly people who are below the poverty line
+          (BPL). This pension provides a monthly stipend to help them meet their
+          basic needs, improving their quality of life in old age.
+        </p>
+        <h3>Requirements</h3>
+        <ul>
+          <li>
+            Age Requirement: 60 years and above. Pension increases with age:
+            <ul>
+              <li>60-79 years: ₹200/month.</li>
+              <li>80+ years: ₹500/month.</li>
+            </ul>
+          </li>
+          <li>BPL Status: Must belong to the Below Poverty Line category.</li>
+          <li>Residency: Must be a permanent resident of India.</li>
+          <li>Bank Account: Required for pension disbursement.</li>
+        </ul>
+        <h3>Eligibility</h3>
+        <ul>
+          <li>Age: 60+ years.</li>
+          <li>BPL Status: Verified with income/assets assessment.</li>
+          <li>Citizenship: Must be an Indian citizen.</li>
+          <li>Documentation: Proof of age, residence, and BPL status required.</li>
+        </ul>
+        <button class="apply-button" onclick="window.location.href='https://nsap.nic.in/';">Apply Here</button>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="info-box">
+        <h3>Pradhan Mantri Vaya Vandana Yojana (PMVVY)</h3>
+        <p>
+          The Pradhan Mantri Vaya Vandana Yojana (PMVVY) is a pension scheme for
+          senior citizens aged 60 years and above, providing them with a steady
+          income during retirement. It offers guaranteed returns at an interest
+          rate of 7.75% per annum, paid monthly, quarterly, or yearly. The scheme
+          ensures financial security by offering a reliable source of income and
+          allows for a loan against the purchase price. In case of premature exit
+          due to critical illness, it allows for a withdrawal, and the entire investment
+          is returned to the nominee upon death. PMVVY helps senior citizens maintain
+          financial independence in their later years.
+        </p>
+        <h3>Requirements</h3>
+        <ul>
+          <li>
+            Age Requirement: 60 years and above.
+            <ul>
+              <li>Minimum Investment: ₹1,56,658 for monthly pension.</li>
+              <li>Maximum Investment: ₹14,88,118 for ₹1,000 monthly pension.</li>
+            </ul>
+          </li>
+          <li>Investment Limit: Maximum investment of ₹15 lakh per senior citizen.</li>
+          <li>Payment Mode: Premium to be paid as a lump sum for the entire policy term.</li>
+          <li>Documents Required:
+            <ul>
+              <li>Identity Proof (Aadhar card, Passport, etc.)</li>
+              <li>Age Proof (Birth certificate, Aadhar card, etc.)</li>
+              <li>Bank Details (for pension disbursement)</li>
+            </ul>
+          </li>
+          <li>Nominee: A nominee must be designated for the return of the purchase price after death.</li>
+        </ul>
+        <h3>Eligibility</h3>
+        <ul>
+          <li>Age: 60+ years.</li>
+          <li>Citizenship: Must be an Indian citizen.</li>
+          <li>Investment: Must meet the minimum and maximum investment requirements.</li>
+          <li>Documentation: Proof of age, identity, and bank details required.</li>
+        </ul>
+        <button class="apply-button" onclick="window.location.href='https://licindia.in/';" >Apply Here</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

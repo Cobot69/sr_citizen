@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        :root {
+            --primary-color: #b658fa;
+            --secondary-color: #457dec9e;
+            --accent-color: #7b00b8a4;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+            --background-light: #dfd0e6d7;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .registration-container {
+            background-color: var(--background-light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 38px rgb(0, 0, 0);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin: 5px 0;
+            color: var(--text-dark);
+            font-size: 0.9em;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: var(--secondary-color);
+        }
+
+        .otp-section {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .otp-section.active {
+            display: block;
+        }
+
+        #otpInput {
+            letter-spacing: 15px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .address-section {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Register</h2>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="username">Full Name:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                <button type="button" onclick="sendOTP()" id="otpButton">Send OTP</button>
+            </div>
+
+            <div class="form-group otp-section" id="otpSection">
+                <label for="otpInput">Enter OTP:</label>
+                <input type="text" id="otpInput" maxlength="6" required>
+            </div>
+
+            <div class="form-group address-section">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode">PIN Code:</label>
+                <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        let generatedOTP = '';
+        const userData = {};
+
+        function sendOTP() {
+            const phone = document.getElementById('phone').value;
+            if(phone.length === 10) {
+                generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                alert(`Your OTP is: ${generatedOTP}`); // In real app, this would be sent via SMS
+                document.getElementById('otpSection').classList.add('active');
+                document.getElementById('otpButton').disabled = true;
+            } else {
+                alert('Please enter a valid 10-digit phone number');
+            }
+        }
+
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const otp = document.getElementById('otpInput').value;
+            const address = document.getElementById('address').value;
+            const pincode = document.getElementById('pincode').value;
+
+            if(otp !== generatedOTP) {
+                alert('Invalid OTP!');
+                return false;
+            }
+
+            // Store user data
+            userData.username = username;
+            userData.email = email;
+            userData.phone = phone;
+            userData.address = address;
+            userData.pincode = pincode;
+
+            // Store in localStorage for persistence
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            alert('Registration successful!');
+            window.location.href = 'MAIN_homepage.html';
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>

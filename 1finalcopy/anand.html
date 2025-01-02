@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anand ashram</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #002f4e;
+      padding: 20px;
+      text-align: center;
+    }
+    .header-container h1, .header-container h5, .header-container h3 {
+      color: white;
+    }
+    .about-container, .facilities-container, .gallery-container, .contact-container {
+      padding: 20px;
+      margin: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: brown;
+    }
+    .facilities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .facility-card {
+      background-color: #e7f3fe;
+      border: 1px solid #b3d7ff;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+    .facility-card:hover {
+      transform: scale(1.05);
+    }
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .gallery-grid img {
+      width: 48%;
+      margin: 1%;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #002f4e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Anand ashram</h1>
+      <h3>Old age home</h3>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="about-container">
+      <h2>About Us</h2>
+      <ul style="font-size:x-large;">
+        <li>Anand Ashram is one of the biggest and best old age homes in North Karnataka, situated in Salkinkoppa, near Haliyal Road in the Dharwad district.</li>
+        <li>Provides a peaceful and supportive atmosphere for senior citizens.</li>
+        <li>Offers comfortable, privacy-focused accommodations tailored to the needs of elderly residents.</li>
+        <li>Regular medical check-ups and access to healthcare services are provided to ensure the health of residents.</li>
+        <li>Residents are served nutritious, well-balanced meals catering to their dietary needs.</li>
+        <li>Emphasizes mental and physical engagement through various recreational activities.</li>
+        <li>Dedicated and compassionate staff members create a caring, home-like environment.</li>
+        <li>Aims to offer elderly individuals a peaceful, compassionate living experience, with care, companionship, and well-being as top priorities.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="facilities">
+    <div class="facilities-container">
+      <h2>Our Facilities</h2>
+      <div class="facilities-grid">
+        <div class="facility-card"><h3>Good and Quality Food</h3></div>
+        <div class="facility-card"><h3>Weekly Doctor Visits</h3></div>
+        <div class="facility-card"><h3>Nursing Care</h3></div>
+        <div class="facility-card"><h3>hygienic environment</h3></div>
+        <div class="facility-card"><h3>Indoor Games & TV Hall</h3></div>
+        <div class="facility-card"><h3>Entertainment Programs</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="gallery-container">
+      <h2>Image Gallery</h2>
+      <div class="gallery-grid">
+        <img src="anand1.jpg" alt="Jeevan Sandhya - Image 1">
+        <img src="anand2.jpg" alt="Jeevan Sandhya - Image 2">
+        <img src="anand3.jpg" alt="Jeevan Sandhya - Image 3">
+        <img src="anand4.jpg" alt="Jeevan Sandhya - Image 4">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-container">
+      <h2>Contact Us</h2>
+      <p style="font-size: large;">Phone: +919945339169</p>
+      <p style="font-size: large;">Address: Salakinakoppa, Dharwad - Haliyal Rd, Dharwad, Karnataka 580118</p>
+      <p style="font-size: large;"> <a href="http://anandashram.org/">Our website</a></p>
+    </div>
+  </section>
+
+  <button onclick="window.location.href = 'oldagehome.html'">
+    ← Back
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

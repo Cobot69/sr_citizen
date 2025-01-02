@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElderlyNet - Hubli Services</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #f86060;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .branding {
+            text-align: center;
+        }
+
+        .branding h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: bold;
+        }
+
+        .branding span {
+            color: var(--accent-color);
+        }
+
+        .branding p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+            color: var(--white);
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 60px 0;
+            padding: 0 20px;
+        }
+
+        .option-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            width: 320px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .option-card h3 {
+            margin: 0;
+            font-size: 2.2em;
+            color: var(--primary-color);
+        }
+
+        .option-card p {
+            margin: 15px 0 0;
+            font-size: 1.3em;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .options-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .navbar {
+            margin-top: 20px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .header-container, .footer-container {
+                padding: 0 15px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .options-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="branding">
+                <h1>Elder<span>Net</span></h1>
+                <p>Easy and reliable services for seniors</p>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="select-area.html?type=grocery">Grocery</a></li>
+                    <li><a href="select-area.html?type=medical">Medical Supplies</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="options-container">
+        <div class="option-card" onclick="window.location.href='select-area.html?type=grocery'">
+            <h3>Grocery</h3>
+            <p>Find local grocery stores</p>
+        </div>
+        <div class="option-card" onclick="window.location.href='select-area.html?type=medical'">
+            <h3>Medical Supplies</h3>
+            <p>Find medical supply stores</p>
+        </div>
+    </div>
+
+    <!-- Add your existing store display and script here -->
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>Thank you ElderNet. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

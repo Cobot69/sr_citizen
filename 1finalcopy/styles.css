@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  header {
+    background: #0095ff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  nav {
+    background: #333;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar li {
+    margin: 0 15px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  .navbar a:hover {
+    background: #575757;
+    border-radius: 5px;
+  }
+  
+  section {
+    padding: 20px;
+  }
+  
+  #about,#facilities, #gallery, #contact {
+    margin: 20px auto;
+    text-align: center;
+    font-size: x-large;
+  }
+  
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    max-width: 950px;
+    margin: 20px auto;
+  }
+  
+  .carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+  }
+  
+  button.prev {
+    left: 10px;
+  }
+  
+  button.next {
+    right: 10px;
+  }
+  
+  button.prev:hover, button.next:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+  }
+  
+  

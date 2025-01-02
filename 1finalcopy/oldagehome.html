@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hubli Dharwad Old Age Homes</title>
+  <style>
+    /* CSS STYLES */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      background-color: #7300d7;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .search-bar {
+      margin: 10px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .search-bar input, .search-bar select, .search-bar button {
+      padding: 10px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .search-bar button {
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .result-card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: white;
+      transition: transform 0.2s;
+    }
+
+    .result-card:hover {
+      transform: scale(1.05);
+    }
+
+    .result-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .result-card .details {
+      padding: 10px;
+    }
+
+    .result-card .details h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .result-card .details p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .result-card .details .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px;
+      color: white;
+      background-color: #3498db;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .result-card .details .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .result-card .details .call-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px;
+      color: white;
+      background-color: #4CAF50;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .result-card .details .call-btn:hover {
+      background-color: #0b420e;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <h1>Hubli-Dharwad Old Age Homes</h1>
+    <p>Explore the best old age homes in Hubli-Dharwad tailored for senior citizens.</p>
+    <div class="search-bar">
+      <input type="text" id="nameSearch" placeholder="Search by name" oninput="filterResults()">
+      <input type="text" id="location" placeholder="Enter location" oninput="filterResults()">
+      <select id="type" onchange="filterResults()">
+        <option value="All">Type: All</option>
+        <option value="Paid">Paid</option>
+        <option value="Free">Free</option>
+      </select>
+      <select id="category" onchange="filterResults()">
+        <option value="All">Category: All</option>
+        <option value="Private">Private</option>
+        <option value="Government">Government</option>
+      </select>
+      <select id="sort" onchange="sortResults()">
+        <option value="name-asc">Sort by Name: A-Z</option>
+        <option value="name-desc">Sort by Name: Z-A</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- RESULTS SECTION -->
+  <main>
+    <div id="results" class="results-grid">
+      <!-- Dynamically generated results will go here -->
+    </div>
+  </main>
+
+  <script>
+    // Sample data for demonstration purposes
+    const oldAgeHomes = [
+      {
+        name: "Sandhya Kirana Old Age Home",
+        location: "Keshwapur, Hubballi, Karnataka",
+        type: "Paid",
+        category: "Private",
+        photo: "https://threebestrated.in/images/SandhyaKiranaOldAgeHome-HubballiDharwad-KA.jpeg",
+        facilities: ["Premium Accommodation", "Routine Health Checkups", "Wholesome Nutritious Meals"],
+        phone: "9448122733",
+        detailsUrl: "sandya.html"
+      },
+      {
+        name: "Shine Home",
+        location: "Tarihal, Hubballi, Karnataka",
+        type: "Free",
+        category: "Government",
+        photo: "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?cb_client=maps_sv.tactile&w=900&h=600&pitch=0&panoid=q0DmIWVdVLPH1HsXtV0tzg&yaw=68.53542",
+        facilities: ["24/7 nursing care", "Regular Checkups", "Indoor Games"],
+        phone: "9663056331",
+        detailsUrl: "shine.html"
+      },
+      {
+        name: "Jeevan Sandhya Old Age Home",
+        location: "NH63, Kadankoppa, Chalamatti, Karnataka 581204",
+        type: "Paid",
+        category: "Private",
+        photo: "https://lh5.googleusercontent.com/p/AF1QipNtuW4uOVulBJmrJUJr8JToi17KYxO7Cov_SjwP=w203-h134-k-no",
+        facilities: ["Weekly 2 time visit doctor ( free of Checkup)", "Nutritious meals", "Yearly trips"],
+        phone: "916-475-3102",
+        detailsUrl: "jeevan.html"
+      },
+      {
+        name: "Anand Ashram Old Age Home Dharwad",
+        location: "Salakinakoppa, Dharwad - Haliyal Rd, Dharwad, Karnataka 580118",
+        type: "Free",
+        category: "Government",
+        photo: "https://lh5.googleusercontent.com/p/AF1QipOhfswRnlqMEOHepDa4kCAQN6Jme3aKlwtMGql6=w203-h152-k-no",
+        facilities: ["Nutritious meals", "Group therapy", "Transportation"],
+        phone: "994-533-9169",
+        detailsUrl: "anand.html"
+      },
+      {
+        name: "Maitri Vrudhashrama",
+        location: "Shivanand Nagar, Hubballi, Karnataka 580025",
+        type: "Free",
+        category: "Government",
+        photo: "https://lh5.googleusercontent.com/p/AF1QipNzxmEsyZ8aLeVO45gG-SAbKJWB-zlUMYf36Ghi=w152-h86-k-no",
+        facilities: ["Complete residential facilities", "Nursing care", "Education and vocational training", "Basic amenities and medical assistance"],
+        phone: "7795891828",
+        detailsUrl: "maithri.html"
+      },
+      {
+        name: "Basavashri Old Age Home Orphanage Mentally Retarded Home Stay",
+        location: "2nd Cross, Omkar Building, Bus Stand, Gokul Rd, near Niketan Heritage, Dollars Hights, behind New KSRTC, Dollars Colony, Chaitanya Nagar, Rajendra Nagar, Hubballi, Karnataka 580030",
+        type: "Paid",
+        category: "Private",
+        photo: "https://lh5.googleusercontent.com/p/AF1QipMmAAVjLiLRvGgiCOeGQMkf-vGtG6Crw23_40fB=w114-h86-k-no",
+        facilities: ["Affordable and comfortable stay", "Day care", "Medical check-ups", "Recreational activities"],
+        phone: "972-690-0047",
+        detailsUrl: "basavashri.html"
+      },
+      {
+        name: "SOCIETY OF ST.VINCENT DE PAUL HOME OF THE AGED",
+        location: "946V+HX8, Bengeri Extension, Keshwapur, Hubballi, Karnataka 5800231",
+        type: "Paid",
+        category: "Private",
+        photo: "vincet1.jpg",
+        facilities: ["Compassionate and loving staff", "Nutritious meals", "Health and wellness programs", "Recreational activities"],
+        phone: "9448300400",
+        detailsUrl: "vincet.html"
+      }
+    ];
+
+    function filterResults() {
+      let nameSearch = document.getElementById('nameSearch').value.toLowerCase();
+      let location = document.getElementById('location').value.toLowerCase();
+      let type = document.getElementById('type').value;
+      let category = document.getElementById('category').value;
+
+      // Filter old age homes based on search criteria
+      let filteredHomes = oldAgeHomes.filter(home => {
+        let matchesName = home.name.toLowerCase().includes(nameSearch);
+        let matchesLocation = home.location.toLowerCase().includes(location);
+        let matchesType = type === 'All' || home.type === type;
+        let matchesCategory = category === 'All' || home.category === category;
+
+        return matchesName && matchesLocation && matchesType && matchesCategory;
+      });
+
+      renderResults(filteredHomes);
+    }
+
+    function sortResults() {
+      let sortOption = document.getElementById('sort').value;
+      let sortedHomes = [...oldAgeHomes];
+      
+      if (sortOption === "name-asc") {
+        sortedHomes.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (sortOption === "name-desc") {
+        sortedHomes.sort((a, b) => b.name.localeCompare(a.name));
+      }
+
+      renderResults(sortedHomes);
+    }
+
+    function renderResults(homes) {
+      const resultsContainer = document.getElementById('results');
+      resultsContainer.innerHTML = ''; // Clear previous results
+
+      homes.forEach(home => {
+        const card = document.createElement('div');
+        card.classList.add('result-card');
+        card.innerHTML = `
+          <img src="${home.photo}" alt="${home.name}">
+          <div class="details">
+            <h3>${home.name}</h3>
+            <p><strong>Location:</strong> ${home.location}</p>
+            <p><strong>Type:</strong> ${home.type}</p>
+            <p><strong>Category:</strong> ${home.category}</p>
+            <p><strong>Facilities:</strong> ${home.facilities.join(', ')}</p>
+            <a href="${home.detailsUrl}" class="btn">View Details</a>
+            <a href="tel:${home.phone}" class="call-btn">Call</a>
+          </div>
+        `;
+        resultsContainer.appendChild(card);
+      });
+    }
+
+    // Initial render of all homes
+    renderResults(oldAgeHomes);
+  </script>
+</body>
+</html>

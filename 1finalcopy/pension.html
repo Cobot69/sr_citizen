@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pension Plan Calculator</title>
+  <link rel="stylesheet" href="pension.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="branding">
+        <h1>Elder<span>Net</span></h1>
+        <p>Secure your health, secure your future.</p>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="home_ph.html">Plans</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+      
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="calculator">
+    <h2>Personalized Pension Plan Calculator</h2>
+    <form id="pension-form">
+      <label for="investment">Monthly Investment (₹):</label>
+      <input type="number" id="investment" placeholder="Enter amount" required>
+      <label for="time-period">Investment Period (Years):</label>
+      <input type="number" id="time-period" placeholder="Enter years" required>
+      <button type="button" id="calculate-button">Calculate Plans</button>
+    </form>
+  </section>
+
+  <div class="plan-container" id="plan-container">
+    <!-- Dynamic plans will be inserted here -->
+  </div>
+
+  <script src="pension.js"></script>
+</body>
+</html>

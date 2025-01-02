@@ -1,0 +1,192 @@
+/* Define CSS Variables */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #f86060;
+    --text-dark: #2b2d42;
+    --text-light: #8d99ae;
+    --background-light: #f8f9fa;
+    --white: #ffffff;
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  }
+  
+  /* Base Styles */
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--background-light);
+    color: var(--text-dark);
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  main {
+    padding: 40px 20px;
+  }
+  
+
+
+  /* Enhance Typography */
+  main p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+  }
+  
+  /* Container */
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Card Styles */
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    background: var(--background-light);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h2 {
+    font-size: 22px;
+    color: var(--primary-color);
+    margin: 10px 0;
+  }
+  
+  .card:hover h2 {
+    color: var(--secondary-color);
+  }
+  
+  .card p {
+    font-size: 16px;
+    color: var(--text-light);
+  }
+  
+  .card a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover a {
+    background: var(--secondary-color);
+    color: var(--white);
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    font-size: 14px;
+    color: var(--white);
+    background: var(--secondary-color);
+    text-align: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .branding h1 {
+      font-size: 2rem;
+    }
+  
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
+
+/* Header Styles */
+.header {
+    background: var(--gradient);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-bottom: 3px solid var(--secondary-color);
+    transition: all 0.3s ease;
+    }
+    
+    .header:hover {
+    border-bottom: 3px solid var(--accent-color);
+    }
+    
+    .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    }
+    
+    /* Branding */
+    .branding h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+    }
+    
+    .branding h1 span {
+    color: var(--accent-color);
+    font-style: italic;
+    font-weight: 800;
+    }
+    
+    .branding p {
+    font-size: 1rem;
+    color: var(--white);
+    margin-top: 5px;
+    }
+    
+    /* Navigation */
+    .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    }
+    
+    .nav-links li a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    }
+    
+    .nav-links li a:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    }
