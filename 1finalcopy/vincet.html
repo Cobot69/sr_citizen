@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vincent D paul</title>
+  <title>Vincent D Paul</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
       padding: 20px;
       text-align: center;
     }
-    .header-container h1, .header-container h5, .header-container h3 {
+    .header-container h1, .header-container h3 {
       color: white;
     }
     .about-container, .facilities-container, .gallery-container, .contact-container {
@@ -29,48 +29,45 @@
     .facilities-container h2, .gallery-container h2, .contact-container h2 {
       color: brown;
     }
-    .facilities-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin: 20px 0;
+    .about-container ul, .facilities-container ul {
+      list-style-type: disc;
+      margin: 20px;
+      padding: 0;
+      font-size: large;
     }
-    .facility-card {
-      background-color: #e7f3fe;
-      border: 1px solid #b3d7ff;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px;
-      width: 200px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-    }
-    .facility-card:hover {
-      transform: scale(1.05);
+    .facilities-container ul li {
+      margin-bottom: 10px;
+      font-weight: bolder;
     }
     .gallery-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
     }
     .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
       width: 100%;
     }
+    .gallery-grid figure {
+      margin: 0;
+    }
     .gallery-grid img {
-      width: 48%; /* Each image takes up about half the width */
-      margin: 1%; /* Space between images */
+      width: 100%;
+      height: 300px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-grid figcaption {
+      text-align: center;
+      font-size: small;
+      margin-top: 5px;
+      font-weight: bolder;
     }
     button {
       position: absolute;
       top: 20px;
       left: 20px;
-      background-color: #003b62;
+      background-color: #002f4e;
       color: white;
       border: none;
       border-radius: 5px;
@@ -84,7 +81,6 @@
   <header>
     <div class="header-container">
       <h1>SOCIETY OF ST.VINCENT DE PAUL HOME OF THE AGED</h1>
-      <h5>Old Age Home</h5>
       <h3>Your second home filled with care and love</h3>
     </div>
   </header>
@@ -94,7 +90,7 @@
       <h2 style="color: brown;">About Us</h2>
       <ul style="font-size: x-large;">
         <li>Society of St. Vincent de Paul Home of the Aged is a well-maintained old age home designed to provide a serene and supportive environment for senior citizens.</li>
-        <li> It is Surrounded by lush greenery, fresh air, and a tranquil atmosphere, it offers a peaceful retreat away from the hustle and bustle of city life.</li>
+        <li>It is surrounded by lush greenery, fresh air, and a tranquil atmosphere, offering a peaceful retreat away from the hustle and bustle of city life.</li>
         <li>The facility accommodates both male and female residents in separate sections, ensuring privacy and comfort for everyone.</li>
         <li>Admission requires a one-time deposit of ₹15,000, followed by a monthly fee of ₹10,000 for this paid old age home.</li>
         <li>Residents enjoy hygienic, nutritious meals and benefit from timely medical facilities whenever needed.</li>
@@ -107,25 +103,15 @@
   </section>
 
   <section id="facilities">
- <div class="facilities-container">
+    <div class="facilities-container">
       <h2 style="color: brown;">Our Facilities</h2>
-      <div class="facilities-grid">
-        <div class="facility-card">
-          <h3>Privacy and comfort accomodation</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Time to time medical facilities</h3>
-        </div>
-        <div class="facility-card">
-          <h3>hygiene and Nutritious food</h3>
-        </div>
-        <div class="facility-card">
-          <h3>group activites and games</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Friendly and caring staffs</h3>
-        </div>
-      </div>
+      <ul>
+        <li>Spacious and Separate Accommodation</li>
+        <li>Regular Health Checkups</li>
+        <li>Nutritious and Well-Balanced Food</li>
+        <li>Peaceful and Nature-Friendly Environment</li>
+        <li>Friendly and Attentive Staff</li>
+      </ul>
     </div>
   </section>
 
@@ -133,10 +119,22 @@
     <div class="gallery-container">
       <h2 style="color: brown;">Image Gallery</h2>
       <div class="gallery-grid">
-        <img src="vincet1.jpg" alt="Old Age Home - 1">
-        <img src="vincet2.jpg" alt="Old Age Home - 2">
-        <img src="vincet3.jpg" alt="Old Age Home - 3">
-        <img src="vincet4.jpg" alt="Old Age Home - 4">
+        <figure>
+          <img src="vincet1.jpg" alt="Old Age Home - 1">
+          <figcaption style="font-weight: bold; font-size: larger;">Building of St.vincent De paul Home of aged</figcaption>
+        </figure>
+        <figure>
+          <img src="vincet2.jpg" alt="Old Age Home - 2">
+          <figcaption style="font-weight: bold; font-size: larger;">Senior citizen enjoying the serene weather</figcaption>
+        </figure>
+        <figure>
+          <img src="vincet3.jpg" alt="Old Age Home - 3">
+          <figcaption style="font-weight: bold; font-size: larger;">Room and its facilities in oldage home</figcaption>
+        </figure>
+        <figure>
+          <img src="vincet4.jpg" alt="Old Age Home - 4">
+          <figcaption style="font-weight: bold; font-size: larger;">Surroundings of St.vincent De paul Home of aged </figcaption>
+        </figure>
       </div>
     </div>
   </section>

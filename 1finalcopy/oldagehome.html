@@ -114,27 +114,32 @@
 <body>
   <!-- HEADER -->
   <header>
-    <h1>Hubli-Dharwad Old Age Homes</h1>
-    <p>Explore the best old age homes in Hubli-Dharwad tailored for senior citizens.</p>
-    <div class="search-bar">
-      <input type="text" id="nameSearch" placeholder="Search by name" oninput="filterResults()">
-      <input type="text" id="location" placeholder="Enter location" oninput="filterResults()">
-      <select id="type" onchange="filterResults()">
-        <option value="All">Type: All</option>
-        <option value="Paid">Paid</option>
-        <option value="Free">Free</option>
-      </select>
-      <select id="category" onchange="filterResults()">
-        <option value="All">Category: All</option>
-        <option value="Private">Private</option>
-        <option value="Government">Government</option>
-      </select>
-      <select id="sort" onchange="sortResults()">
-        <option value="name-asc">Sort by Name: A-Z</option>
-        <option value="name-desc">Sort by Name: Z-A</option>
-      </select>
-    </div>
+    <header>
+      <h1>Hubli-Dharwad Old Age Homes</h1>
+      <p>Explore the best old age homes in Hubli-Dharwad tailored for senior citizens.</p>
+      <div class="search-bar">
+        <input type="text" id="nameSearch" placeholder="Search by name" oninput="filterResults()">
+        <input type="text" id="location" placeholder="Enter location" oninput="filterResults()">
+        <select id="type" onchange="filterResults()">
+          <option value="All">Type: All</option>
+          <option value="Paid">Paid</option>
+          <option value="Free">Free</option>
+        </select>
+        <select id="category" onchange="filterResults()">
+          <option value="All">Category: All</option>
+          <option value="Private">Private</option>
+          <option value="Government">Government</option>
+        </select>
+      </div>
+      <div class="emergency-section">
+        <span>For emergencies, Call Police:</span>
+        <button onclick="window.location.href='tel:100'" style="color: rgb(0, 0, 0); background: red; border: rgb(130, 35, 35); cursor: pointer; font-size: 16px;">100</button>
+        <span>or</span>
+        <button onclick="window.location.href='tel:112'" style="color: rgb(0, 0, 0); background: red; border: rgb(96, 37, 37); cursor: pointer; font-size: 16px;">112</button>
+      </div>
+    </header>
   </header>
+
 
   <!-- RESULTS SECTION -->
   <main>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sandhya kirana</title>
+  <title>Sandhya Kirana</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -29,42 +29,37 @@
     .facilities-container h2, .gallery-container h2, .contact-container h2 {
       color: brown;
     }
-    .facilities-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin: 20px 0;
+    .facilities-container ul {
+      list-style-type: disc;
+      margin: 20px;
+      padding: 0;
+      font-size: large;
     }
-    .facility-card {
-      background-color: #e7f3fe;
-      border: 1px solid #b3d7ff;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px;
-      width: 200px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-    }
-    .facility-card:hover {
-      transform: scale(1.05);
+    .facilities-container ul li {
+      margin-bottom: 10px;
     }
     .gallery-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
     }
     .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
       width: 100%;
     }
+    .gallery-grid figure {
+      margin: 0;
+    }
     .gallery-grid img {
-      width: 48%;
-      margin: 1%;
+      width: 100%;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-grid figcaption {
+      text-align: center;
+      font-size: small;
+      margin-top: 5px;
     }
     button {
       position: absolute;
@@ -103,30 +98,19 @@
         <li>The home allows residents to maintain meaningful bonds with their families, reinforcing the home-like feeling and emotional well-being.</li>
         <li>With its friendly and caring staff, peaceful surroundings, and emphasis on hygiene, nutrition, and family engagement, Sandhya Kirana is an excellent choice for senior citizens seeking comfort, care, and a supportive community in Keshwapur, Hubballi.</li>
       </ul>
-      
     </div>
   </section>
 
   <section id="facilities">
     <div class="facilities-container">
       <h2 style="color: brown;">Our Facilities</h2>
-      <div class="facilities-grid">
-        <div class="facility-card">
-          <h3>Premium Accommodation</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Routine Health Checkups</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Wholesome Nutritious Meals</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Family-Friendly Atmosphere</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Compassionate and Dedicated Staff</h3>
-        </div>
-      </div>
+      <ul style="font-weight: bolder;">
+        <li>Premium Accommodation</li>
+        <li>Routine Health Checkups</li>
+        <li>Wholesome Nutritious Meals</li>
+        <li>Family-Friendly Atmosphere</li>
+        <li>Compassionate and Dedicated Staff</li>
+      </ul>
     </div>
   </section>
 
@@ -134,10 +118,22 @@
     <div class="gallery-container">
       <h2 style="color: brown;">Image Gallery</h2>
       <div class="gallery-grid">
-        <img src="sandya1.jpg" alt="Old Age Home - 1">
-        <img src="sandya2.jpg" alt="Old Age Home - 2">
-        <img src="sandya3.jpg" alt="Old Age Home - 3">
-        <img src="sandya4.jpg" alt="Old Age Home - 4">
+        <figure>
+          <img src="sandya1.jpg" alt="Old Age Home - 1">
+          <figcaption style="font-weight: bold; font-size: larger;">Visitors donating the groceries and addressing the senior citizens</figcaption>
+        </figure>
+        <figure>
+          <img src="sandya2.jpg" alt="Old Age Home - 2">
+          <figcaption style="font-weight: bold; font-size: larger;"> Staffs serving food in Dining Hall</figcaption>
+        </figure>
+        <figure>
+          <img src="sandya3.jpg" alt="Old Age Home - 3">
+          <figcaption style="font-weight: bold; font-size: larger;">Sandhya kirana building - silver park, Hubballi</figcaption>
+        </figure>
+        <figure>
+          <img src="sandya4.jpg" alt="Old Age Home - 4">
+          <figcaption style="font-weight: bold; font-size: larger;">Visitors celebrations with senior citizens</figcaption>
+        </figure>
       </div>
     </div>
   </section>

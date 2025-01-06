@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Basavashri</title>
+  <title>Basavashri Ashrama</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
       padding: 20px;
       text-align: center;
     }
-    .header-container h1, .header-container h5, .header-container h3 {
+    .header-container h1, .header-container h3 {
       color: white;
     }
     .about-container, .facilities-container, .gallery-container, .contact-container {
@@ -29,48 +29,51 @@
     .facilities-container h2, .gallery-container h2, .contact-container h2 {
       color: brown;
     }
-    .facilities-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin: 20px 0;
+    .about-container ul {
+      list-style-type: disc;
+      margin: 20px;
+      padding: 0;
+      font-size: large;
     }
-    .facility-card {
-      background-color: #e7f3fe;
-      border: 1px solid #b3d7ff;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px;
-      width: 200px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
+    .facilities-container ul {
+      list-style-type: disc;
+      margin: 20px;
+      padding: 0;
+      font-size: large;
+      font-weight: bolder;
     }
-    .facility-card:hover {
-      transform: scale(1.05);
+    .facilities-container ul li {
+      margin-bottom: 10px;
     }
     .gallery-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
     }
     .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
       width: 100%;
     }
+    .gallery-grid figure {
+      margin: 0;
+    }
     .gallery-grid img {
-      width: 48%;
-      margin: 1%;
+      width: 100%;
+      height: 300px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-grid figcaption {
+      text-align: center;
+      font-size: small;
+      margin-top: 5px;
+      font-weight: bolder;
     }
     button {
       position: absolute;
       top: 20px;
       left: 20px;
-      background-color: #003b62;
+      background-color: #002f4e;
       color: white;
       border: none;
       border-radius: 5px;
@@ -84,7 +87,6 @@
   <header>
     <div class="header-container">
       <h1>Basavashri Ashrama</h1>
-      <h5>Old Age Home</h5>
       <h3>Home of peace, purpose, and spiritual growth</h3>
     </div>
   </header>
@@ -96,15 +98,11 @@
         <li>Basavashri Old Age Home is a well-maintained facility with two branches in Hubballi, designed to provide a safe and comfortable environment for senior citizens.</li>
         <li>One branch is located in the city, while the other is in Anchatgeri, 9 kilometers from Hubballi.</li>
         <li>The Anchatgeri branch is surrounded by nature, offering fresh air and a peaceful environment that is ideal for elderly residents to live in comfort.</li>
-        <li>The Anchatgeri branch is also suitable for individuals with mental health challenges, providing them with a supportive place to stay.</li>
         <li>The Hubballi branch currently houses 25 residents, while the Anchatgeri branch accommodates 50.</li>
         <li>The home offers both free and paid admission. For free admission, the individual must be declared homeless by the local police station and provide a letter as proof.</li>
         <li>Paid admissions are also available at a reasonable fee.</li>
         <li>Both branches provide all basic facilities, including regular medical checkups, clean living spaces, and nutritious meals.</li>
-        <li>Residents can also participate in light physical activities to stay relaxed and healthy.</li>
-        <li>The home accepts both male and female residents, with separate accommodations to ensure privacy and comfort.</li>
         <li>The staff are friendly and attentive, ensuring every resident feels cared for.</li>
-        <li>Basavashri Old Age Home is committed to providing a safe and peaceful environment for elderly people and those in need, making it a reliable choice for senior citizens.</li>
       </ul>
     </div>
   </section>
@@ -112,23 +110,13 @@
   <section id="facilities">
     <div class="facilities-container">
       <h2 style="color: brown;">Our Facilities</h2>
-      <div class="facilities-grid">
-        <div class="facility-card">
-          <h3>Spacious and Separate Accommodation</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Regular Health Checkups</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Nutritious and Well-Balanced Food</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Peaceful and Nature-Friendly Environment</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Friendly and Attentive Staff</h3>
-        </div>
-      </div>
+      <ul>
+        <li>Spacious and Separate Accommodation</li>
+        <li>Regular Health Checkups</li>
+        <li>Nutritious and Well-Balanced Food</li>
+        <li>Peaceful and Nature-Friendly Environment</li>
+        <li>Friendly and Attentive Staff</li>
+      </ul>
     </div>
   </section>
 
@@ -136,10 +124,22 @@
     <div class="gallery-container">
       <h2 style="color: brown;">Image Gallery</h2>
       <div class="gallery-grid">
-        <img src="basavashri1.jpg" alt="Old Age Home - 1">
-        <img src="basavashri2.jpg" alt="Old Age Home - 2">
-        <img src="basavashri3.jpg" alt="Old Age Home - 3">
-        <img src="basavashri4.jpg" alt="Old Age Home - 4">
+        <figure>
+          <img src="basavashri1.jpg" alt="Old Age Home - 1">
+          <figcaption style="font-weight: bold; font-size: larger;">Basavashri ashram in Hubbali city</figcaption>
+        </figure>
+        <figure>
+          <img src="basavashri2.jpg" alt="Old Age Home - 2">
+          <figcaption style="font-weight: bold; font-size: larger;">Building of Basavashri ashram, Hubbali city</figcaption>
+        </figure>
+        <figure>
+          <img src="basavashri3.jpg" alt="Old Age Home - 3">
+          <figcaption style="font-weight: bold; font-size: larger;">Senior citizens in Basavashri ashram, Anchatgeri</figcaption>
+        </figure>
+        <figure>
+          <img src="basavashri4.jpg" alt="Old Age Home - 4">
+          <figcaption style="font-weight: bold; font-size: larger;">Basavashri ashram, Anchatgeri</figcaption>
+        </figure>
       </div>
     </div>
   </section>

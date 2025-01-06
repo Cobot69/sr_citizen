@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maithri</title>
+  <title>Maithri Vrudashrama</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
       padding: 20px;
       text-align: center;
     }
-    .header-container h1, .header-container h5, .header-container h3 {
+    .header-container h1, .header-container h3 {
       color: white;
     }
     .about-container, .facilities-container, .gallery-container, .contact-container {
@@ -29,48 +29,51 @@
     .facilities-container h2, .gallery-container h2, .contact-container h2 {
       color: brown;
     }
-    .facilities-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin: 20px 0;
+    .about-container ul {
+      list-style-type: disc;
+      margin: 20px;
+      padding: 0;
+      font-size: large;
     }
-    .facility-card {
-      background-color: #e7f3fe;
-      border: 1px solid #b3d7ff;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px;
-      width: 200px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
+    .facilities-container ul {
+      list-style-type: disc;
+      margin: 20px;
+      padding: 0;
+      font-size: large;
+      font-weight: bolder;
     }
-    .facility-card:hover {
-      transform: scale(1.05);
+    .facilities-container ul li {
+      margin-bottom: 10px;
     }
     .gallery-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
     }
     .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
       width: 100%;
     }
+    .gallery-grid figure {
+      margin: 0;
+    }
     .gallery-grid img {
-      width: 48%;
-      margin: 1%;
+      width: 100%;
+      height: 300px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-grid figcaption {
+      text-align: center;
+      font-size: small;
+      margin-top: 5px;
+      font-weight: bolder;
     }
     button {
       position: absolute;
       top: 20px;
       left: 20px;
-      background-color: #003b62;
+      background-color: #002f4e;
       color: white;
       border: none;
       border-radius: 5px;
@@ -84,8 +87,7 @@
   <header>
     <div class="header-container">
       <h1>Maithri Vrudashrama</h1>
-      <h5>Old Age Home</h5>
-      <h3>A home filled with care and warmth for our elders</h3>
+      <h3>A Home for Our Elders</h3>
     </div>
   </header>
 
@@ -94,42 +96,26 @@
       <h2 style="color: brown;">About Us</h2>
       <ul style="font-size: x-large;">
         <li>Maithri Vrudashrama is a free old age home located in Bairidevarakoppa, Hubballi.</li>
-        <li>It is a peaceful and welcoming place designed to provide care and support for elderly residents.</li>
-        <li>Currently, the ashram houses 25 senior citizens, with 5 dedicated staff members who ensure a friendly and homely atmosphere.</li>
-        <li>The staff are known for their caring nature, making every resident feel valued and comfortable.</li>
-        <li>The ashram provides all the basic necessities, including regular medical checkups, nutritious meals, and a clean, well-maintained living environment.</li>
-        <li>Residents engage in extra activities like bhajans, which foster a sense of community and spiritual well-being.</li>
-        <li>These activities help the elderly stay active and involved, adding joy and meaning to their daily lives.</li>
-        <li>Situated far from the main road, Maithri Vrudashrama offers a serene environment with minimal noise pollution.</li>
-        <li>The peaceful surroundings and fresh air make it an ideal place for senior citizens to live in comfort.</li>
-        <li>The ashram accepts both male and female residents, ensuring separate accommodations to maintain privacy.</li>
-        <li>With its friendly staff, supportive environment, and a range of activities, Maithri Vrudashrama truly feels like home for its residents.</li>
-        <li>It is a place where elderly individuals can live with dignity and peace, making it a reliable and compassionate choice for senior care in Hubballi.</li>
+        <li>It provides care and support to elderly residents, ensuring their comfort and well-being.</li>
+        <li>The ashram houses 25 senior citizens, with a team of 5 dedicated and compassionate staff members.</li>
+        <li>The peaceful surroundings and serene atmosphere make it an ideal place for elders to live with dignity.</li>
+        <li>Residents enjoy a clean and comfortable living environment with regular medical checkups and nutritious meals.</li>
+        <li>Bhajans and spiritual activities foster a sense of community and mental well-being.</li>
+        <li>Separate accommodations for men and women ensure privacy and comfort.</li>
       </ul>
-      
     </div>
   </section>
 
   <section id="facilities">
     <div class="facilities-container">
       <h2 style="color: brown;">Our Facilities</h2>
-      <div class="facilities-grid">
-        <div class="facility-card">
-          <h3>Clean Living Environment</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Regular Medical Checkups</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Nutritious Meals</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Bhajans and Spiritual Activities</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Friendly and Caring Staff</h3>
-        </div>
-      </div>
+      <ul>
+        <li>Clean Living Environment</li>
+        <li>Regular Medical Checkups</li>
+        <li>Nutritious Meals</li>
+        <li>Bhajans and Spiritual Activities</li>
+        <li>Friendly and Caring Staff</li>
+      </ul>
     </div>
   </section>
 
@@ -137,12 +123,25 @@
     <div class="gallery-container">
       <h2 style="color: brown;">Image Gallery</h2>
       <div class="gallery-grid">
-        <img src="maithri1.jpg" alt="Old Age Home - 1">
-        <img src="maithri2.jpg" alt="Old Age Home - 2">
-        <img src="maithri3.jpg" alt="Old Age Home - 3">
-        <img src="maithri4.jpg" alt="Old Age Home - 4">
+        <figure>
+          <img src="maithri1.jpg" alt="Old Age Home - 1">
+          <figcaption style="font-weight: bold; font-size: larger;">All senior citizens sitting together for bhajan</figcaption>
+        </figure>
+        <figure>
+          <img src="maithri2.jpg" alt="Old Age Home - 2">
+          <figcaption style="font-weight: bold; font-size: larger;">Senior citizens interaction with visitors</figcaption>
+        </figure>
+        <figure>
+          <img src="maithri3.jpg" alt="Old Age Home - 3">
+          <figcaption style="font-weight: bold; font-size: larger;">Surroundings of maithri odage home</figcaption>
+        </figure>
+        <figure>
+          <img src="maithri4.jpg" alt="Old Age Home - 4">
+          <figcaption style="font-weight: bold; font-size: larger;">Women of maithri oldage home</figcaption>
+        </figure>
       </div>
-      <video src="maithri.mp4" alt="Old Age Home Video" controls width="57%"></video>
+      <video src="maithri.mp4" controls width="80%" style="margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);"></video>
+      <figcaption style="font-weight: bold; font-size: larger;">Senior citizens doing bhajan video</figcaption>
     </div>
   </section>
 

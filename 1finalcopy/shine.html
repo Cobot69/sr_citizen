@@ -26,42 +26,42 @@
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    .facilities-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin: 20px 0;
+    .facilities-container h2, .gallery-container h2, .contact-container h2 {
+      color: brown;
     }
-    .facility-card {
-      background-color: #e7f3fe;
-      border: 1px solid #b3d7ff;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px;
-      width: 200px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
+    .facilities-container ul {
+      list-style-type: disc;
+      margin: 20px;
+      padding: 0;
+      font-size: large;
+      font-weight: bolder;
     }
-    .facility-card:hover {
-      transform: scale(1.05);
+    .facilities-container ul li {
+      margin-bottom: 10px;
     }
     .gallery-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
     }
     .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
       width: 100%;
     }
+    .gallery-grid figure {
+      margin: 0;
+    }
     .gallery-grid img {
-      width: 48%; /* Each image takes up about half the width */
-      margin: 1%; /* Space between images */
+      width: 100%;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-grid figcaption {
+      text-align: center;
+      font-size: small;
+      margin-top: 5px;
+      font-weight: bolder;
     }
     button {
       position: absolute;
@@ -81,7 +81,7 @@
   <header>
     <div class="header-container">
       <h1>Shine Old Age Home</h1>
-      <h3>"Empowering Elderly Lives"</h3>
+      <h3>Empowering Elderly Lives</h3>
     </div>
   </header>
 
@@ -96,32 +96,20 @@
         <li>The center provides exceptional medical care and creates opportunities for active, engaged, and purposeful living.</li>
         <li>Shine Trust enriches the aging experience not only for residents but also for their families, staff, and the greater community.</li>
       </ul>
-      
     </div>
   </section>
 
   <section id="facilities">
     <div class="facilities-container">
       <h2 style="color: brown;">Our Facilities</h2>
-      <div class="facilities-grid">
-        <div class="facility-card">
-          <h3>Inpatient Rehabilitation</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Private Rooms</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Wheel Chair Accessible Seating</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Women Wellness Center</h3> </div>
-        <div class="facility-card">
-          <h3>Elderly Care</h3>
-        </div>
-        <div class="facility-card">
-          <h3>Prayer Hall</h3>
-        </div>
-      </div>
+      <ul>
+        <li>Inpatient Rehabilitation</li>
+        <li>Private Rooms</li>
+        <li>Wheelchair Accessible Seating</li>
+        <li>Women Wellness Center</li>
+        <li>Elderly Care</li>
+        <li>Prayer Hall</li>
+      </ul>
     </div>
   </section>
 
@@ -129,10 +117,22 @@
     <div class="gallery-container">
       <h2 style="color: brown;">Image Gallery</h2>
       <div class="gallery-grid">
-        <img src="shine1.jpg" alt="Old Age Home - 1">
-        <img src="shine2.jpg" alt="Old Age Home - 2">
-        <img src="shine3.jpg" alt="Old Age Home - 3">
-        <img src="shine4.jpg" alt="Old Age Home - 4">
+        <figure>
+          <img src="shine1.jpg" alt="Old Age Home - 1">
+          <figcaption style="font-weight: bold; font-size: larger;">Shine home - tarihal, Hubballi</figcaption>
+        </figure>
+        <figure>
+          <img src="shine2.jpg" alt="Old Age Home - 2">
+          <figcaption style="font-weight: bold; font-size: larger;">Senior citizens engaged in Birthday celebrations</figcaption>
+        </figure>
+        <figure>
+          <img src="shine3.jpg" alt="Old Age Home - 3">
+          <figcaption style="font-weight: bold; font-size: larger;">Doctor checking pulse rate of a senior citizen</figcaption>
+        </figure>
+        <figure>
+          <img src="shine4.jpg" alt="Old Age Home - 4">
+          <figcaption style="font-weight: bold; font-size: larger;">Family celebrating birthday of a senior citizen</figcaption>
+        </figure>
       </div>
     </div>
   </section>
